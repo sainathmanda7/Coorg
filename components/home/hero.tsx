@@ -50,16 +50,6 @@ export function Hero() {
           <Line delay={0.58}>hills of Coorg.</Line>
         </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: EASE, delay: 0.9 }}
-          className="mt-7 max-w-md text-base leading-relaxed text-soft/80 sm:text-lg"
-        >
-          A peaceful homestay above Madikeri, where misted mornings, open terraces and warm
-          hospitality make the mountains feel like home.
-        </motion.p>
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

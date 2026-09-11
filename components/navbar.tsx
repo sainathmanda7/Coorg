@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { nav, whatsappUrl } from '@/lib/site-data'
@@ -11,7 +10,7 @@ const EASE = [0.22, 1, 0.36, 1] as const
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  const pathname = usePathname()
+  const [activeSection, setActiveSection] = useState<string>('home')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -20,14 +19,70 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => setOpen(false), [pathname])
-
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
     return () => {
       document.body.style.overflow = ''
     }
   }, [open])
+
+  useEffect(() => {
+    const sections = document.querySelectorAll<HTMLElement>('section[id]')
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id)
+          }
+        })
+      },
+      {
+        rootMargin: '-20% 0px -35% 0px',
+        threshold: 0.2,
+      }
+    )
+
+    sections.forEach((section) => observer.observe(section))
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
+  const isLinkActive = (item: (typeof nav)[number]) => {
+    const section = activeSection.toLowerCase()
+    const href = item.href.toLowerCase()
+    const hrefId = href.replace(/^[/#]+/, '')
+    const label = item.label.toLowerCase()
+
+    if (hrefId === section || label === section || href === `#${section}` || href === `/${section}`) {
+      return true
+    }
+
+    if (
+      (section === 'home' || section === 'hero' || section === '') &&
+      (href === '/' || href === '#' || hrefId === 'home' || hrefId === 'hero' || label === 'home')
+    ) {
+      return true
+    }
+
+    if (
+      (section === 'stay' || section === 'rooms') &&
+      (hrefId === 'stay' || hrefId === 'rooms' || label === 'stay' || label === 'rooms')
+    ) {
+      return true
+    }
+
+    if (
+      (section === 'contact' || section === 'location' || section === 'cta') &&
+      (hrefId === 'contact' || hrefId === 'location' || label === 'contact')
+    ) {
+      return true
+    }
+
+    return false
+  }
 
   const solid = scrolled || open
   const textTone = solid ? 'text-charcoal' : 'text-soft'
@@ -50,7 +105,7 @@ export function Navbar() {
 
           <ul className="hidden items-center gap-9 lg:flex">
             {nav.map((item) => {
-              const active = pathname === item.href
+              const active = isLinkActive(item)
               return (
                 <li key={item.href}>
                   <Link
@@ -114,22 +169,28 @@ export function Navbar() {
             transition={{ duration: 0.4, ease: EASE }}
           >
             <ul className="flex flex-col">
-              {nav.map((item, i) => (
-                <motion.li
-                  key={item.href}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: EASE, delay: 0.08 + i * 0.06 }}
-                  className="border-b border-charcoal/10"
-                >
-                  <Link
-                    href={item.href}
-                    className="block py-5 font-display text-4xl text-charcoal"
+              {nav.map((item, i) => {
+                const active = isLinkActive(item)
+                return (
+                  <motion.li
+                    key={item.href}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: EASE, delay: 0.08 + i * 0.06 }}
+                    className="border-b border-charcoal/10"
                   >
-                    {item.label}
-                  </Link>
-                </motion.li>
-              ))}
+                    <Link
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className={`block py-5 font-display text-4xl text-charcoal transition-opacity duration-300 ${
+                        active ? 'opacity-100' : 'opacity-60 hover:opacity-100'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.li>
+                )
+              })}
             </ul>
             <motion.a
               href={whatsappUrl()}

@@ -5,14 +5,9 @@ import { rooms } from '@/lib/site-data'
 
 export function RoomsPreview() {
   return (
-    <section className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+    <section id="stay" className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-40">
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <SectionHeading eyebrow="The Rooms" title="Simple, restful rooms." />
-        <Reveal delay={0.15}>
-          <ArrowLink href="/stay" variant="ghost">
-            View all rooms
-          </ArrowLink>
-        </Reveal>
       </div>
 
       <div className="mt-14 grid gap-6 sm:mt-20 sm:grid-cols-2 lg:gap-10">

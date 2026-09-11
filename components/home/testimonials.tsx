@@ -1,53 +1,38 @@
 'use client'
 
-import { useState } from 'react'
-import { AnimatePresence, motion } from 'motion/react'
 import { testimonials } from '@/lib/site-data'
-
-const EASE = [0.22, 1, 0.36, 1] as const
+import { motion } from 'framer-motion'
 
 export function Testimonials() {
-  const [index, setIndex] = useState(0)
-  const current = testimonials[index]
+  const items = [...testimonials, ...testimonials, ...testimonials, ...testimonials]
 
   return (
-    <section className="bg-charcoal text-soft">
-      <div className="mx-auto max-w-4xl px-5 py-24 text-center sm:px-8 sm:py-32 lg:py-40">
+    <section className="overflow-hidden bg-charcoal py-24 text-soft sm:py-32 lg:py-40">
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12 mb-12">
         <span className="eyebrow text-soft/50">Guest Words</span>
+      </div>
 
-        <div className="mt-10 min-h-[220px] sm:min-h-[240px]">
-          <AnimatePresence mode="wait">
-            <motion.blockquote
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.6, ease: EASE }}
-            >
-              <p className="font-display text-2xl leading-[1.3] text-soft sm:text-3xl lg:text-4xl">
-                “{current.quote}”
-              </p>
-              <footer className="mt-8 flex flex-col items-center gap-1">
-                <span className="text-sm font-medium tracking-wide text-soft">{current.name}</span>
-                <span className="text-xs uppercase tracking-[0.16em] text-soft/50">{current.detail}</span>
-              </footer>
-            </motion.blockquote>
-          </AnimatePresence>
-        </div>
-
-        <div className="mt-10 flex items-center justify-center gap-3">
-          {testimonials.map((_, i) => (
-            <button
+      <div className="relative flex w-full overflow-hidden">
+        <motion.div 
+          className="flex w-max gap-6 px-3 sm:gap-8"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+        >
+          {items.map((item, i) => (
+            <div
               key={i}
-              type="button"
-              onClick={() => setIndex(i)}
-              aria-label={`Show review ${i + 1}`}
-              className={`h-1.5 rounded-full transition-all duration-500 ${
-                i === index ? 'w-8 bg-soft' : 'w-1.5 bg-soft/30 hover:bg-soft/60'
-              }`}
-            />
+              className="w-[320px] flex-shrink-0 rounded-2xl bg-white/5 p-8 border border-white/10 sm:w-[420px]"
+            >
+              <p className="font-display text-lg leading-relaxed text-soft sm:text-xl">
+                "{item.quote}"
+              </p>
+              <footer className="mt-8 flex flex-col gap-1">
+                <span className="text-sm font-medium tracking-wide text-soft">{item.name}</span>
+                <span className="text-xs uppercase tracking-widest text-soft/50">{item.detail}</span>
+              </footer>
+            </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

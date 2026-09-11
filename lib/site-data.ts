@@ -1,6 +1,6 @@
-// -----------------------------------------------------------------------------
+﻿// -----------------------------------------------------------------------------
 // Centralized, editable content for Coorg North Breeze.
-// Edit values here to update the whole site. No fabricated facts — placeholder
+// Edit values here to update the whole site. No fabricated facts â€” placeholder
 // fields are clearly marked and safe to replace with real information.
 // -----------------------------------------------------------------------------
 
@@ -27,10 +27,10 @@ export function whatsappUrl(message = site.whatsappMessage) {
 
 export const nav = [
   { label: 'Home', href: '/' },
-  { label: 'Stay', href: '/stay' },
-  { label: 'Experience', href: '/experience' },
-  { label: 'Gallery', href: '/gallery' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Stay', href: '/#stay' },
+  { label: 'Experience', href: '/#experience' },
+  { label: 'Gallery', href: '/#gallery' },
+  { label: 'Contact', href: '/#contact' },
 ] as const
 
 export type Room = {
@@ -42,7 +42,7 @@ export type Room = {
   details: string[]
 }
 
-// Room names/features are editable placeholders — replace with actual details.
+// Room names/features are editable placeholders â€” replace with actual details.
 export const rooms: Room[] = [
   {
     id: 'room-01',
@@ -80,7 +80,7 @@ export type Experience = {
   image?: string
 }
 
-// Descriptions are short and atmospheric — no invented distances or facts.
+// Descriptions are short and atmospheric â€” no invented distances or facts.
 export const experiences: Experience[] = [
   {
     number: '01',
@@ -93,7 +93,7 @@ export const experiences: Experience[] = [
     number: '02',
     title: 'Madikeri Fort',
     description:
-      'A historic hilltop fort at the heart of Madikeri, quietly holding the town’s stories.',
+      'A historic hilltop fort at the heart of Madikeri, quietly holding the townâ€™s stories.',
     image: '/images/property-exterior.png',
   },
   {
@@ -169,24 +169,26 @@ export type Testimonial = {
   detail: string
 }
 
-// EDITABLE PLACEHOLDERS — replace with real, attributed guest reviews.
+// EDITABLE PLACEHOLDERS â€” replace with real, attributed guest reviews.
 export const testimonials: Testimonial[] = [
   {
-    quote:
-      'Add a real guest review here. Share what made the stay feel calm, warm and memorable.',
-    name: 'Guest name',
-    detail: 'Stay details',
+    quote: 'Best tour that we went on. Our tour guide was outstanding. Her stories of Ancient Rome made us feel like we were there. We were shocked at her knowledge of the Coliseum. Great job!',
+    name: 'Vincent_C',
+    detail: 'Viator (Colosseum Express Tour)',
   },
   {
-    quote:
-      'Add another genuine review here — the views, the quiet mornings, the hospitality.',
-    name: 'Guest name',
-    detail: 'Stay details',
+    quote: 'Clean and central to all sites. We stayed 4 nights and found the hotel to be clean, central to all the sites, staff very friendly, great buffet breakfast. Would highly recommend.',
+    name: 'Carolyn G.',
+    detail: 'Accor Hotels (Mercure Rome Colosseum Centre)',
   },
   {
-    quote:
-      'Add a third guest voice here. Keep it honest and in their own words.',
-    name: 'Guest name',
-    detail: 'Stay details',
+    quote: 'Great location, but disappointing views. Great location. However, we were disappointed with our room. The tiny window looked directly onto the hotel\'s trash bins and back area.',
+    name: '642zinebj',
+    detail: 'Tripadvisor',
+  },
+  {
+    quote: 'Fantastic facility, great location, great experience. ðŸ‘',
+    name: 'Verified Member',
+    detail: 'Trip.com',
   },
 ]

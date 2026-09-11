@@ -4,7 +4,7 @@ import { site } from '@/lib/site-data'
 
 export function Location() {
   return (
-    <section className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+    <section id="contact" className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-40">
       <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
         <div className="flex flex-col gap-7">
           <Reveal>
@@ -22,9 +22,6 @@ export function Location() {
           <Reveal delay={0.2} className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:gap-4">
             <ArrowLink href={site.mapsDirectionsUrl} variant="solid" external>
               Get directions
-            </ArrowLink>
-            <ArrowLink href="/contact" variant="ghost">
-              Contact us
             </ArrowLink>
           </Reveal>
         </div>

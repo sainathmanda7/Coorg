@@ -5,18 +5,13 @@ import { experiences } from '@/lib/site-data'
 
 export function ExperiencePreview() {
   return (
-    <section className="bg-soft">
+    <section id="experience" className="bg-soft">
       <div className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-40">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading eyebrow="Around Coorg" title="Places worth the drive.">
             The homestay is a calm base for exploring the viewpoints, forts and coffee country that make
             Coorg what it is.
           </SectionHeading>
-          <Reveal delay={0.15}>
-            <ArrowLink href="/experience" variant="ghost">
-              All experiences
-            </ArrowLink>
-          </Reveal>
         </div>
 
         <ul className="mt-14 border-t border-charcoal/12 sm:mt-20">

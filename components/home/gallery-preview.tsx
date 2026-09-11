@@ -22,7 +22,7 @@ export function GalleryPreview() {
   const preview = gallery.slice(0, 4)
 
   return (
-    <section className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+    <section id="gallery" className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-40">
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <div className="flex flex-col gap-5">
           <span className="eyebrow text-earth">Gallery</span>
@@ -30,9 +30,6 @@ export function GalleryPreview() {
             Moments from the mountain.
           </h2>
         </div>
-        <ArrowLink href="/gallery" variant="ghost">
-          Full gallery
-        </ArrowLink>
       </div>
 
       <div className="mt-14 grid grid-cols-2 gap-4 sm:mt-20 sm:grid-cols-4 sm:gap-5">

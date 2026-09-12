@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion'
@@ -27,66 +27,42 @@ export function Property() {
     }
   })
 
-  const dayOpacity = useTransform(scrollYProgress, [0, 1], [1, 0])
+  // Once day dissolves by 0.65, it stays strictly at 0 opacity till the very end and beyond
+  const dayOpacity = useTransform(scrollYProgress, [0.05, 0.65, 1], [1, 0, 0], { clamp: true })
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.05], { clamp: true })
 
   return (
-    <section className="relative h-[300vh] w-full" ref={containerRef}>
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+    <section className="relative h-[200vh] w-full" ref={containerRef}>
+      <div className="sticky top-0 h-screen w-full overflow-hidden bg-charcoal">
+        
         {/* Background Image: Night View */}
-        <div className="absolute inset-0 h-full w-full">
-          <Image
-            src="/images/Night-view.png"
-            alt="Night view of Coorg"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-
-        {/* Foreground Image: Day View */}
-        <motion.div
+        <motion.div 
           className="absolute inset-0 h-full w-full"
-          style={{ opacity: dayOpacity }}
+          style={{ scale: imageScale }}
         >
           <Image
-            src="/images/Day-view.png"
-            alt="Day view of Coorg"
+            src="/images/Night-view.png"
+            alt="Night view of Coorg with starry hills"
             fill
             className="object-cover"
             priority
           />
         </motion.div>
 
-        {/* Cinematic Text overlay */}
-        <div className="absolute left-6 top-1/2 z-20 -translate-y-1/2 max-w-md sm:left-12 lg:left-24 lg:max-w-xl">
-          <motion.span 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="eyebrow text-soft/90 drop-shadow-md"
-          >
-          </motion.span>
-          
-          <motion.h2 
-            initial={{ opacity: 0, y: -150 }}
-            whileInView={{ opacity: 1, y: -200 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-5 font-display text-[4.25rem] leading-[1.05] text-soft drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)] sm:text-6xl lg:text-7xl"
-          >
-            Peace till Sunset
-          </motion.h2>
+        {/* Foreground Image: Day View with strict fade to 0 */}
+        <motion.div
+          className="absolute inset-0 h-full w-full pointer-events-none"
+          style={{ opacity: dayOpacity, scale: imageScale }}
+        >
+          <Image
+            src="/images/Day-view.png"
+            alt="Day view of Coorg hills in lush sunlight"
+            fill
+            className="object-cover"
+            priority
+          />
+        </motion.div>
 
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 text-base font-light leading-relaxed text-soft/90 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] sm:text-lg lg:text-xl"
-          >
-          </motion.p>
-        </div>
       </div>
     </section>
   )

@@ -1,9 +1,8 @@
-'use client'
+﻿'use client'
 
 import { useRef } from 'react'
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { site, whatsappUrl } from '@/lib/site-data'
-import FogLayer from '@/components/FogLayer'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
@@ -32,22 +31,37 @@ export function Hero() {
         style={{ opacity: reduce ? 0.6 : overlayOpacity }}
         className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/30 to-charcoal/80"
       />
-
-      <FogLayer />
       <motion.div
         style={{ y: reduce ? 0 : contentY }}
         className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-end px-5 pb-16 sm:px-8 sm:pb-20 lg:px-12 lg:pb-24"
       >
-        <motion.span
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}
-          className="eyebrow text-soft/80"
+        {/* Elegant Animated Editorial Monogram & Title Line */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: EASE, delay: 0.2 }}
+          className="flex items-center gap-3 sm:gap-4 mb-3"
         >
-          {site.location}
-        </motion.span>
+          {/* Glowing Animated Expanding Gold/Emerald Line */}
+          <motion.div 
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={{ scaleX: 1, opacity: 1 }}
+            transition={{ duration: 1.2, ease: EASE, delay: 0.3 }}
+            className="h-[1.5px] w-8 sm:w-12 bg-gradient-to-r from-amber-400/80 to-soft/40 origin-left"
+          />
 
-        <h1 className="mt-5 max-w-4xl font-display text-[3.25rem] leading-[0.95] text-soft sm:text-7xl lg:text-8xl">
+          <div className="flex flex-wrap items-baseline gap-2 sm:gap-3">
+            <span className="font-serif italic text-lg sm:text-xl lg:text-2xl text-amber-200/95 tracking-wide drop-shadow-sm">
+              Coorg North Breeze Homestay
+            </span>
+            <span className="text-soft/40 font-light hidden sm:inline">&mdash;</span>
+            <span className="eyebrow text-soft/75 text-[0.6875rem] sm:text-[0.75rem] uppercase tracking-[0.24em] font-medium">
+              {site.location}
+            </span>
+          </div>
+        </motion.div>
+
+        <h1 className="mt-2 max-w-4xl font-display text-[3.25rem] leading-[0.95] text-soft sm:text-7xl lg:text-8xl">
           <Line delay={0.45}>Wake to the</Line>
           <Line delay={0.58}>hills of Coorg.</Line>
         </h1>
@@ -66,7 +80,7 @@ export function Hero() {
           >
             Book your stay
             <span className="transition-transform duration-500 group-hover:translate-x-1" aria-hidden="true">
-              ↗
+              â†—
             </span>
           </a>
           <a

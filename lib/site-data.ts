@@ -127,39 +127,34 @@ export type GalleryImage = {
 
 export const gallery: GalleryImage[] = [
   {
-    src: '/images/coorg-town-day.png',
-    alt: 'Daytime view over the colourful hillside homes and green hills of Coorg',
+    src: '/Gallery/road view.png',
+    alt: 'Road view',
     category: 'Views',
   },
   {
-    src: '/images/property-exterior.png',
-    alt: 'The North Breeze homestay exterior with terracotta tiled roof in golden light',
+    src: '/Gallery/balcony.png',
+    alt: 'Balcony',
     category: 'Property',
   },
   {
-    src: '/images/balcony.png',
-    alt: 'Open terrace with potted plants and string lights overlooking the town at dusk',
+    src: '/Gallery/Pent House.png',
+    alt: 'Pent House',
     category: 'Property',
   },
   {
-    src: '/images/room-1.png',
-    alt: 'Bedroom with a pitched timber ceiling and warm wooden furniture',
+    src: '/Gallery/Real night view.png',
+    alt: 'Real night view',
+    category: 'Views',
+  },
+  {
+    src: '/Gallery/hall.png',
+    alt: 'Hall',
     category: 'Rooms',
   },
   {
-    src: '/images/room-2.png',
-    alt: 'Bright corner bedroom filled with natural light and a simple work desk',
+    src: '/Gallery/window view.png',
+    alt: 'Window view',
     category: 'Rooms',
-  },
-  {
-    src: '/images/night-terrace.png',
-    alt: 'Warmly lit terrace with string lights under a dusk sky',
-    category: 'Property',
-  },
-  {
-    src: '/images/coorg-night.png',
-    alt: 'Coorg town glittering with lights at night beneath a moody sky',
-    category: 'Coorg',
   },
 ]
 

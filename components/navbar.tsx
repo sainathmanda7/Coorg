@@ -90,14 +90,14 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
           solid ? 'border-b border-charcoal/10 bg-ivory/90 backdrop-blur-md' : 'bg-transparent'
         }`}
       >
         <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-5 sm:h-20 sm:px-8 lg:px-12">
           <Link
             href="/"
-            className={`font-display text-xl tracking-wide transition-colors duration-500 sm:text-2xl ${textTone}`}
+            className={`font-display text-xl tracking-wide transition-all duration-500 sm:text-2xl ${textTone}`}
             aria-label="Coorg North Breeze — home"
           >
             North Breeze
@@ -110,7 +110,7 @@ export function Navbar() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className={`relative text-[0.8125rem] font-medium uppercase tracking-[0.16em] transition-colors duration-500 ${textTone} ${
+                    className={`relative text-[0.8125rem] font-medium uppercase tracking-[0.16em] transition-all duration-500 ${textTone} ${
                       active ? 'opacity-100' : 'opacity-70 hover:opacity-100'
                     }`}
                   >
@@ -131,7 +131,7 @@ export function Navbar() {
               href={whatsappUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className={`hidden items-center gap-2 border px-5 py-2.5 text-[0.75rem] font-medium uppercase tracking-[0.16em] transition-colors duration-500 lg:inline-flex ${
+              className={`hidden items-center gap-2 border px-5 py-2.5 text-[0.75rem] font-medium uppercase tracking-[0.16em] transition-all duration-500 lg:inline-flex ${
                 solid
                   ? 'border-charcoal/30 text-charcoal hover:bg-charcoal hover:text-soft'
                   : 'border-soft/40 text-soft hover:bg-soft hover:text-charcoal'

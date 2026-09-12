@@ -90,3 +90,26 @@
     scroll-behavior: auto !important;
   }
 }
+
+@keyframes fog {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@theme {
+  --animate-fog-bg: fog-slide 60s linear infinite;
+  --animate-fog-fg: fog-slide 40s linear infinite;
+
+  @keyframes fog-slide {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+}

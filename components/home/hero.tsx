@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { site, whatsappUrl } from '@/lib/site-data'
+import FogLayer from '@/components/FogLayer'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
@@ -18,7 +19,7 @@ export function Hero() {
     <section ref={ref} className="relative h-[100svh] w-full overflow-hidden bg-charcoal">
       <motion.div style={{ y: reduce ? 0 : y }} className="absolute inset-0 h-[118%] w-full">
         <motion.img
-          src="/images/coorg-town-day.png"
+          src="/images/Landing Page.png"
           alt="Panoramic daytime view over the hills and homes of Coorg"
           className="h-full w-full object-cover"
           initial={{ scale: reduce ? 1 : 1.12 }}
@@ -32,6 +33,7 @@ export function Hero() {
         className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/30 to-charcoal/80"
       />
 
+      <FogLayer />
       <motion.div
         style={{ y: reduce ? 0 : contentY }}
         className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-end px-5 pb-16 sm:px-8 sm:pb-20 lg:px-12 lg:pb-24"
